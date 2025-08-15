@@ -20,6 +20,13 @@ import {
   DrawerTitle,
   DrawerTrigger,
 } from '@/components/ui/drawer';
+import {
+  Sheet,
+  SheetContent,
+  SheetDescription,
+  SheetHeader,
+  SheetTitle,
+} from '@/components/ui/sheet';
 import { Gallery, type Image as GalleryImage } from 'react-grid-gallery';
 import Lightbox from 'yet-another-react-lightbox';
 import type { DownloadFunctionProps } from 'yet-another-react-lightbox';
@@ -521,24 +528,24 @@ function QRCodeGalleryPage() {
         </FileUpload>
       </DrawerContent>
     </Drawer>
-    <Drawer open={infoOpen} onOpenChange={setInfoOpen}>
-      <DrawerContent>
-        <DrawerHeader>
+    <Sheet open={infoOpen} onOpenChange={setInfoOpen}>
+      <SheetContent className="z-[1000]">
+        <SheetHeader>
           {addedInfo && (
             <>
-              <DrawerTitle>{addedInfo.title}</DrawerTitle>
-              <DrawerDescription>{addedInfo.subtitle}</DrawerDescription>
+              <SheetTitle>{addedInfo.title}</SheetTitle>
+              <SheetDescription>{addedInfo.subtitle}</SheetDescription>
             </>
           )}
-        </DrawerHeader>
+        </SheetHeader>
         {capturedInfo && (
           <div className="px-4 pb-4">
             <div className="font-semibold">{capturedInfo.title}</div>
             <div className="text-sm text-muted-foreground">{capturedInfo.subtitle}</div>
           </div>
         )}
-      </DrawerContent>
-    </Drawer>
+      </SheetContent>
+    </Sheet>
     </>
   );
 }
