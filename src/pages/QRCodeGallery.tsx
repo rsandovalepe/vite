@@ -72,8 +72,7 @@ function QRCodeGalleryPage() {
   const [sortBy, setSortBy] = useState<SortBy>('createdAt');
   const galleryRef = useRef<HTMLDivElement>(null);
   const scrollToGallery = useCallback(() => {
-    console.log("test");
-    // galleryRef.current?.scrollIntoView({ behavior: 'smooth' });
+    galleryRef.current?.scrollIntoView({ behavior: 'smooth' });
   }, []);
   const randomImage = useMemo(() => {
     if (images.length === 0) return null;
@@ -396,14 +395,18 @@ function QRCodeGalleryPage() {
                 <Button>+ Add to album</Button>
               </DrawerTrigger>
             </div>
-            <div className="absolute bottom-4 left-1/2 transform -translate-x-1/2 -translate-y-1/2 flex items-center gap-1 text-sm">
+            <div className="absolute bottom-4 left-1/2 -translate-x-1/2 -translate-y-1/2 transform z-20 flex items-center gap-1 text-sm">
               <span>
                 {images.length} {images.length === 1 ? 'photo' : 'photos'}
               </span>
-              <ArrowDown
-                className="h-4 w-4 cursor-pointer"
+              <button
+                type="button"
                 onClick={scrollToGallery}
-              />
+                aria-label="Scroll to gallery"
+                className="cursor-pointer"
+              >
+                <ArrowDown className="h-4 w-4" />
+              </button>
             </div>
           </div>
           <div ref={galleryRef} className="h-[25vh]  p-4">
