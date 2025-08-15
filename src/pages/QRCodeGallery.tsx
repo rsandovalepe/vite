@@ -432,10 +432,13 @@ function QRCodeGalleryPage() {
         render={{
           controls: () => (
             <button
-              className="absolute top-4 right-28 flex h-8 w-8 items-center justify-center rounded-full bg-black/50 text-white"
-              onClick={() => setInfoOpen(true)}
+              className="absolute top-4 right-28 flex h-16 w-16 items-center justify-center rounded-full bg-black/50 text-white"
+              onClick={(e) => {
+                e.stopPropagation();
+                setInfoOpen(true);
+              }}
             >
-              <Info className="h-4 w-4" />
+              <Info className="h-8 w-8" />
             </button>
           ),
         }}
